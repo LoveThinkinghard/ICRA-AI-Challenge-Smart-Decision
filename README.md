@@ -1,3 +1,3 @@
 # ICRA-AI-Challenge-Smart-Decision
 
-## Reward Fuction
+## Reward Function
