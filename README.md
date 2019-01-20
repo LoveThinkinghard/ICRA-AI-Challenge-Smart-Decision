@@ -27,7 +27,7 @@ This game is a confrontational game, according to the game mechanism, car need t
 ## **2. Supply reward**
 The evaluation of supply can be divided into two parts: the reward for bullet number and the punishment based on the distance from the supply site when the bullet is lack.
 
-###**Reward of bullet number**
+### **Reward of bullet number**
 The more bullets, the more times it may hit the enemy, so there will be an incentive score for each bullet, and in the process of supply, more bullets will be obtained due to the incentive mechanism of the number of bullets.
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=BulletReward=Constant3*Bullet" target="_blank"><img src="https://latex.codecogs.com/gif.latex?BulletReward=Constant3*Bullet" title="BulletReward=Constant3*Bullet" /></a>
