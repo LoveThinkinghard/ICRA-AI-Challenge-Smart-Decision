@@ -1,28 +1,25 @@
 ## Definition of State Space
 #### Robot information parameter:
-| parameter name | parameter mean | 
+| Name | Description | 
 | ------ | ------ |
-| BatteryPitchAngle | pitch angle of battery |
-| BatteryYawAngle | yaw angle of battery |
-| ConsoleAngle | angle of console |
-| Coordinate | the coordinates of robot |
+| Pitch | pitch angle of gimbal |
+| Yaw | yaw angle of gimbal |
+| Angle | angle of chassis |
+| Coordinate | coordinates of robot |
 
 	
 #### Game information parameter:
-| parameter name | parameter mean | 
+| Name | Description | 
 | ------ | ------ |
+| Time | competition time |
 | HP | blood volume |
-| Bullet | Bullets |
-| BarrelTemperature	 | barrel heat |
-| SupplyDis | distance from supply |	
-| SupplyUse | replenishment times |
-| DefenseDis | distance from the defense zone |
-| DefenseTime | remaining defense time |
-| DefenseStayTime | time spent in the defense zone |	
-| DefenseUse | whether defensive bonus skills have been used |
-| CompetingTime | time from compete begin |
-| DefensiveAreaLocation | location of defensive area |
-| SupplyAreaLocation | location of supply area |	
+| Bullet | bullets left |
+| Heat | barrel heat |
+| Supply-Use | supply times have used |
+| Bonus-Time | defense bonus time left |
+| Stay-Time | time stayed in the defense bonus zone |	
+| Is-Use | whether defensive bonus has been used |	
+
 
 ## State parameter of the robot:
 #### Self state parameter:
