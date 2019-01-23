@@ -21,7 +21,7 @@
 | Is-Use | whether defensive bonus has been used |	
 
 
-## Observation or input of our model:
+## Observation or input of our model
 #### Self parameter:
 | Name | Description | 
 | ------ | ------ |
