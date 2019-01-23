@@ -1,4 +1,4 @@
-## Definition of State Space
+## State Space
 #### Robot information parameter:
 | Name | Description | 
 | ------ | ------ |
@@ -8,7 +8,7 @@
 | Coordinate | coordinates of robot |
 
 	
-#### Game information parameter:
+#### Competition information parameter:
 | Name | Description | 
 | ------ | ------ |
 | Time | competition time |
@@ -21,9 +21,9 @@
 | Is-Use | whether defensive bonus has been used |	
 
 
-## State parameter of the robot:
-#### Self state parameter:
-| parameter name | parameter mean | 
+## Observation or input of our model:
+#### Self parameter:
+| Name | Description | 
 | ------ | ------ |
 | HP | blood volume |
 | Bullet | Bullets |
@@ -37,24 +37,13 @@
 | Bonus-Time | bonus defense time left |
 | Stay-Time | Time spent in the defense zone |
 | Is-Use | Whether defensive bonus skills have been used |
-#### Enemy state parameter:
-##### Good enemy vehicle  status parameters
-| parameter name | parameter mean | 
+#### Enemy parameter:
+| Name | Description | 
 | ------ | ------ |
-| Good-HP | Blood volume |
-| Good-Coordinate | Coordinates |
-| Good-Dis | Enemy better chariot distance |
-| Good-Battery-Direction | Fortress orientation |	
-| Good-Supply-Dis| Distance from supply |
-| Good-Defense-Dis | Distance from the defense zone |
-##### Bad enemy vehicle status parameters
-| parameter name | parameter mean | 
-| ------ | ------ |
-| Bad-HP | Blood volume |
-| Bad-Coordinate | Coordinates |
-| Bad-Dis | Enemy better chariot distance |
-| Bad-Battery-Direction | Fortress orientation |	
-| Bad-Supply-Dis| Distance from supply |
-| Bad-Defense-Dis | Distance from the defense zone |
+| HP[1] | Blood volume |
+| Coordinate[1] | Coordinates |
+| Dis | Enemy better chariot distance |
+| Supply-Dis| Distance from supply |
+| Defense-Dis | Distance from the defense zone |
 
-
+[1] If we get them 
