@@ -26,24 +26,26 @@
 | Name | Description | 
 | ------ | ------ |
 | HP | blood volume |
-| Bullet | Bullets |
+| Bullet | bullets left |
 | Coordinate | coordinates |
 | Console-Angle | console angle |	
 | Heat| barrel heat |
 | Time | competition time |
 | Supply-Dis | distance from supply |
-| Supply-Use | Replenishment times |	
-| Defense-Dis | distance from the defense zone |
+| Supply-Use | supply times have used |	
+| Defense-Dis | distance[1] from the defense zone |
 | Bonus-Time | bonus defense time left |
 | Stay-Time | Time spent in the defense zone |
 | Is-Use | Whether defensive bonus skills have been used |
 #### Enemy parameter:
 | Name | Description | 
 | ------ | ------ |
-| HP[1] | Blood volume |
-| Coordinate[1] | Coordinates |
-| Dis | Enemy better chariot distance |
+| HP[2] | Blood volume |
+| Coordinate[2] | Coordinates |
+| Dis | Distance enemy to us |
 | Supply-Dis| Distance from supply |
 | Defense-Dis | Distance from the defense zone |
 
-[1] If we get them 
+[1] Motion planning distance.
+
+[2] If observed. 
