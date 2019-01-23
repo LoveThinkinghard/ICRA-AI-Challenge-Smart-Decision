@@ -5,7 +5,7 @@
 | Pitch | pitch angle of gimbal |
 | Yaw | yaw angle of gimbal |
 | Angle | angle of chassis |
-| Coordinate | absolutely coordinates of robot |
+| Coordinate | absolute coordinates of robot |
 
 	
 #### Competition information parameter:
@@ -27,7 +27,7 @@
 | ------ | ------ |
 | HP | blood volume |
 | Bullet | bullets left |
-| Coordinate | coordinates |
+| Coordinate | absolute coordinates |
 | Console-Angle | console angle |	
 | Heat| barrel heat |
 | Time | competition time |
@@ -41,7 +41,7 @@
 | Name | Description | 
 | ------ | ------ |
 | HP[2] | blood volume |
-| Coordinate[2] | coordinates |
+| Coordinate[2] | absolute coordinates |
 | Dis | distance enemy to us |
 | Supply-Dis| distance from supply |
 | Defense-Dis | distance from the defense zone |
