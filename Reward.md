@@ -1,6 +1,6 @@
 # **The design of reward function**
 
-We can define the advantages of current situation by a reward function, and evaluate the current operation by the difference of the reward function between two time points. The reward function can be divided into five modules: danger degree, supply reward, defense bonus reward, team cooperation reward and limitation of map obstacles. Finally, we use <a href="https://www.codecogs.com/eqnedit.php?latex=TeamworkValue()" target="_blank"><img src="https://latex.codecogs.com/gif.latex?TeamworkValue()" title="TeamworkValue()" /></a> as a reward function for a combat vehicle.
+We can define the advantages of current situation by a reward function, and evaluate the current operation by the difference of the reward function between two time points. The reward function can be divided into five modules: danger degree, supply reward, defense bonus reward, team cooperation reward and limitation of map obstacles. Finally, we use `TeamworkValue()` as a reward function for a combat vehicle.
 
 ## **1. Danger degree**
 Definition of danger degree: It mainly evaluates the current blood volume of the car and the remaining time of game. The less blood volume or the more time rest means the situation is more dangerous. Because the rule mentions that if the car is killed, our opponent can get all score, and obviously our attack ability will decrease, so when the blood volume approaches zero, the danger degree tends to infinite. concrete assessment strategies are as follows:
@@ -8,21 +8,30 @@ Definition of danger degree: It mainly evaluates the current blood volume of the
 ### **Game remaining time**
 time and blood can be understood as a liner relationship, so the danger degree and time should also be liner relationship
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=Dangerous()&space;\propto&space;time" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Dangerous()&space;\propto&space;time" title="Dangerous() \propto time" /></a>
+```
+Dangerous() ∝ time
+```
 
 ### **Blood Volume**
 When the amount of blood is large, it can be more aggressive. Therefore, the cost of former part of the blood can be regarded linear function. When the blood volume is below a certain limit, it becomes vulnerable to being killed, so it needs to pay more attention to his own safety. The cost of later part of the blood can be regarded as exponential function.
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=Dangerous()&space;\propto&space;\begin{cases}&space;Constant1*&space;(2000&space;-&space;HP),&space;HP&space;\geq&space;limit\\&space;Constant2^{\frac{limit-HP}{50}}&plus;Constant1*(2000-HP)&space;,&space;HP&space;<&space;limit&space;\end{cases}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Dangerous()&space;\propto&space;\begin{cases}&space;Constant1*&space;(2000&space;-&space;HP),&space;HP&space;\geq&space;limit\\&space;Constant2^{\frac{limit-HP}{50}}&plus;Constant1*(2000-HP)&space;,&space;HP&space;<&space;limit&space;\end{cases}" title="Dangerous() \propto \begin{cases} Constant1* (2000 - HP), HP \geq limit\\ Constant2^{\frac{limit-HP}{50}}+Constant1*(2000-HP) , HP < limit \end{cases}" /></a>
+```
+if HP >= limit:
+    Dangerous() = Constant1 * (2000 - HP)
+else:
+    Dangerous() = Constant2 ** ((limit - HP) / HP) + Constant1 * (2000 - HP)
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=(limit=400,Constant1=0.25,&space;Constant2=7)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?(limit=400,Constant1=0.25,&space;Constant2=7)" title="(limit=400,Constant1=0.25, Constant2=7)" /></a>
+(limit = 400, Constant1 = 0.25, Constant2 = 7)
+```
 
 ### **Optimization of confrontational games**
-This game is a confrontational game, according to the game mechanism, car need to make more complex decisions according to the enemy's state, such as through the barrel overheating, do more damages to the enemy. In order to achieve this, we need to combine the enemy's state with ours. Therefore, the evaluation of the danger degree is defined by the difference of the <a href="https://www.codecogs.com/eqnedit.php?latex=Dangerous()" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Dangerous()" title="Dangerous()" /></a> between the enemy and ourselves. In addition, SelfProtect is defined as a <a href="https://www.codecogs.com/eqnedit.php?latex=selfp" target="_blank"><img src="https://latex.codecogs.com/gif.latex?selfp" title="selfp" /></a> parameter, which can be used to adjust the degree of radical process. The larger the value, the more attention to its own security.
+This game is a confrontational game, according to the game mechanism, car need to make more complex decisions according to the enemy's state, such as through the barrel overheating, do more damages to the enemy. In order to achieve this, we need to combine the enemy's state with ours. Therefore, the evaluation of the danger degree is defined by the difference of the `Dangerous()` between the enemy and ourselves. In addition, SelfProtect is defined as a `selfp` parameter, which can be used to adjust the degree of radical process. The larger the value, the more attention to its own security.
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=ValueDan=-Selfp*Dangerous(self)&plus;(1-Selfp)*\frac{\sum_iDangerous(enemy_i)}{2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?ValueDan=-Selfp*Dangerous(self)&plus;(1-Selfp)*\frac{\sum_iDangerous(enemy_i)}{2}" title="ValueDan=-Selfp*Dangerous(self)+(1-Selfp)*\frac{\sum_iDangerous(enemy_i)}{2}" /></a>
+```
+ValueDan = -Selfp * Dangerous(self) + (1 - Selfp) * SUM(Dangerous(enemy))
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=(SelfP=0.3)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?(SelfP=0.3)" title="(SelfP=0.3)" /></a>
+(Selfp = 0.3)
+```
 
 ## **2. Supply reward**
 The evaluation of supply can be divided into two parts: the reward for bullet number and the punishment based on the distance from the supply site when the bullet is lack.
