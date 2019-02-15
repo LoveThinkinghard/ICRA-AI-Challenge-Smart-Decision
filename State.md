@@ -1,51 +1,38 @@
 ## State Space
-#### Robot information parameter:
-| Name | Description | 
-| ------ | ------ |
-| Pitch | pitch angle of gimbal |
-| Yaw | yaw angle of gimbal |
-| Angle | angle of chassis |
-| Coordinate | absolute coordinates of robot |
+#### Robot Param:
+| Name | Dtype | Description | 
+| ------ | ------ | ------ |
+| Pitch | float | pitch angle of gimbal |
+| Yaw | float | yaw angle of gimbal |
+| Angle | float | angle of chassis |
+| X | float | absolute coordinate of robots on x-axis |
+| Y | float | absolute coordinate of robots on y-axis |
 
 	
-#### Competition information parameter:
-| Name | Description | 
-| ------ | ------ |
-| Time | competition time |
-| HP | blood volume |
-| Bullet | bullets left |
-| Heat | barrel heat |
-| Supply-Use | supply times have used |
-| Bonus-Time | defense bonus time left |
-| Stay-Time | time stayed in the defense bonus zone |	
-| Is-Use | whether defensive bonus has been used |	
+#### Competition Param:
+| Name | Dtype | Description | 
+| ------ | ------ | ------ |
+| Time | float | competition time |
+| HP | float | blood volume |
+| Bullet | int | bullets left |
+| Heat | float | barrel heat |
+| Use-Supply | int | supply times have used |
+| Time-Bonus | float | defense bonus time left |
+| Time-Stay | float | time stayed in the defense bonus zone |	
+| Is-Use | bool | whether defensive bonus has been used |	
 
 
-## Observation or input of our model
-#### Self parameter:
-| Name | Description | 
-| ------ | ------ |
-| HP | blood volume |
-| Bullet | bullets left |
-| Coordinate | absolute coordinates |
-| Console-Angle | console angle |	
-| Heat| barrel heat |
-| Time | competition time |
-| Supply-Dis | distance from supply |
-| Supply-Use | supply times have used |	
-| Defense-Dis | distance[1] from the defense bonus zone |
-| Bonus-Time | defense bonus time left |
-| Stay-Time | time stayed in the defense zone |
-| Is-Use | whether defensive bonus has been used |
-#### Enemy parameter:
-| Name | Description | 
-| ------ | ------ |
-| HP[2] | blood volume |
-| Coordinate[2] | absolute coordinates |
-| Dis | distance enemy to us |
-| Supply-Dis| distance from supply |
-| Defense-Dis | distance from the defense zone |
+## Model inputs
 
-[1] Motion planning distance.
+#### 1. full `Robot Param` and `Competition Param` of self-robots
 
-[2] If observed. 
+#### 2. observed or predicted `Robot Param` and `Competition Param` of enemy-robots
+
+#### 3. computed params below of self-robots and enemy-robots
+| Name | Dtype | Description |
+| ------ | ------ | ------ |
+| Dis-Supply | float | distance[1] to supply |
+| Dis-Defense | float | distance to the defense bonus zone |
+| Dis-Robots | float | distance between robots |
+
+[1] All distances refer to motion planning distance.
