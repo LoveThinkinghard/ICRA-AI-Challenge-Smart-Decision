@@ -1,5 +1,5 @@
 ## State Space
-#### Robot Param:
+#### Robot Params (total: 5)
 | Name | Dtype | Description | 
 | ------ | ------ | ------ |
 | Pitch | float | pitch angle of gimbal |
@@ -9,7 +9,7 @@
 | Y | float | absolute coordinate of robots on y-axis |
 
 	
-#### Competition Param:
+#### Competition Params (total: 8)
 | Name | Dtype | Description | 
 | ------ | ------ | ------ |
 | Time | float | competition time |
@@ -24,11 +24,11 @@
 
 ## Model inputs
 
-#### 1. full `Robot Param` and `Competition Param` of self-robots
+#### 1. full `Robot Params` and `Competition Params` of self-robots (total: 26)
 
-#### 2. observed or predicted `Robot Param` and `Competition Param` of enemy-robots
+#### 2. observed or predicted `Robot Params` and `Competition Params` of enemy-robots (total: 26)
 
-#### 3. computed params below of self-robots and enemy-robots
+#### 3. computed params below of self-robots and enemy-robots (total: 12)
 | Name | Dtype | Description |
 | ------ | ------ | ------ |
 | Dis-Supply | float | distance[1] to supply |
